@@ -1,0 +1,29 @@
+
+  * {
+  box-sizing: border-box;
+  }
+  
+  body {
+    padding: 3% 0%;;
+  }
+
+  $space: 20px;
+  #piVexStream {
+    padding: $space;
+  }
+  #arrowControl {
+    padding: $space;
+    font-size: 5em;
+  }
+
+  #robotButton {
+    text-align: left;
+    margin: 30px;
+    padding: 10px 24px;
+    font-size: 2em;
+  }
+
+  #statusbutton {
+    text-align: left;
+    font-size: 2em;
+  }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyMirror interface</title>
+    <link rel="stylesheet" href="/styles/mystyle.css">
+
+
+</head>
+
+<body>
+    <!-- toolbar -->
+    <div class="toolbar">
+        <table style="width: 100%">
+            <td style="width: 50%;">
+                <button onclick="document.title = 'CLOSING!!!';" class="btn2"> Close</button>
+            </td>
+            <td class="time">
+                <h5 id="date"> </h5>
+                <h6 id="time"> </h6>
+            </td>
+        </table>
+    </div>
+    <!-- main box -->
+    <div class="mainbox" id="Talk">
+        <div style="" id="root"></div>
+    </div>
+</body>
+
+<script>
+    var d = new Date();
+    document.getElementById("date").innerHTML = d.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' });
+    document.getElementById("time").innerHTML = d.toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true });
+    setInterval(function () {
+
+        var d = new Date();
+        document.getElementById("date").innerHTML = d.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' });
+        document.getElementById("time").innerHTML = d.toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true });
+    }, 300);
+</script>
+
+<script type="text/javascript" src="/scripts/main.js"></script>
+
+
+        
+
+
+</html>

@@ -2,21 +2,34 @@
 module.exports = function (app) {
 
   // importing function to be exectued upon reaching url
-  var todoList = require('../controllers/Controller');
+  var myController = require('../controllers/Controller');
+  var rootName = 'Web/';
 
-  // ****todoList Routes****
+  // ****todoList html file Routes****
+          // ****webpages****
+  app.get('/', function (req, res) {
+    res.sendFile(  'index.html', { root: rootName } );
+  });
+
+  app.get('/:app', function (req, res) {
+    try {res.sendFile(  'apps/' + req.params.app , { root: rootName } ); }
+    catch(e) { res.status(404).send({url: req.originalUrl + '/ 404 not found'}) }
+  });
+
+  app.get('/:first/:second', function (req, res) {
+    try {res.sendFile(   req.params.first + '/' + req.params.second , { root: rootName } ); }
+    catch(e) { res.status(404).send({url: req.originalUrl + '/ 404 not found'}) }
+  });
+
+  app.get('/:first/:second/:third', function (req, res) {
+    try {res.sendFile(   req.params.first + '/' + req.params.second + '/' + req.params.third , { root: rootName } ); }
+    catch(e) { res.status(404).send({url: req.originalUrl + '/ 404 not found'}) }
+  });
+
+
+// ****todoList Controller routes Routes****
   app.route('/tasks')
-    .get(todoList.list_all_tasks)
-    .post(todoList.create_a_task);
-
-  app.route('/tasks/bydate')
-    .get(todoList.read_by_range)
-
-
-  app.route('/tasks/:taskId')
-    .get(todoList.read_a_task)
-    .put(todoList.update_a_task)
-    .delete(todoList.delete_a_task);
-
+    .get(myController.create_a_task)
 
 };
+

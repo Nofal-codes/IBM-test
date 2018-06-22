@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>MyMirror interface</title>
+  <link rel="stylesheet" href="/styles/mystyle.css">
+</head>
+
+<body>
+  <!-- toolbar -->
+  <div class="toolbar">
+    <table style="width: 100%">
+      <td style="width: 50%;">
+        <button onclick="window.location='/';" class="btn2"> Back</button>
+      </td>
+      <td class="time">
+        <h5 id="date"> </h5>
+        <h6 id="time"> </h6>
+      </td>
+    </table>
+  </div>
+  <!-- main box -->
+  <div class="mainbox" id="root">
+
+    <link rel="stylesheet" href="MyRobotcss.css">
+    <script>
+      var streamHost = 'http://10.0.164.26:8000/index.html';   // ip address for video stream
+      var commandHost = 'http://10.0.164.26:8080';   // ip address for commander
+    </script>
+
+    <body>
+      <table>
+        <tbody>
+          <tr>
+            <td rowspan="3">
+              <div id='piVexStream'></div>
+            </td>
+            <td style="text-align: center;">
+              <button type="button" id="robotButton" onclick="listenCommand()">Voice button</button>
+            </td>
+          </tr>
+          <tr>
+            <td id="statusbutton">Click to start speaking!</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <TABLE style="height:375px; width:375px;" id="arrowControl">
+                  <TR>
+                    <TD></TD>
+                    <TD onclick="commandPi('front')">🡹</TD>
+                    <TD></TD>
+                  </TR>
+                  <TR>
+                    <TD onclick="commandPi('left')">🡸</TD>
+                    <TD></TD>
+                    <TD onclick="commandPi('right')">🡺</TD>
+                  </TR>
+                  <TR>
+                    <TD></TD>
+                    <TD onclick="commandPi('back')">🡻</TD>
+                    <TD></TD>
+                  </TR>
+                </TABLE>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </body>
+
+    <script src="MyRobotjs.js"></script>
+  </div>
+</body>
+
+
+<script>
+  var d = new Date();
+  document.getElementById("date").innerHTML = d.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' });
+  document.getElementById("time").innerHTML = d.toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true });
+  setInterval(function () {
+
+    var d = new Date();
+    document.getElementById("date").innerHTML = d.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' });
+    document.getElementById("time").innerHTML = d.toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true });
+  }, 300);
+</script>
+
+</html>

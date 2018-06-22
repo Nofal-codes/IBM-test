@@ -1,0 +1,20 @@
+################################
+##       By: Ahmad Nofal      ##
+##   nofal.ahmad@outlook.com  ##
+################################
+
+*This folder contains the files needed to do vex motors controlled by rasperry pi project with video streaming using piCamera.
+
+Commander.py is python code that trigger GPIO pins to send PWM signal to the vex motor controller by receiving http GET request on local server.
+
+XXX.py is python code that streams picamera video. This code was taken from picamera Docs and only had minor modifications.
+
+xxx.html is webpage to display video stream and control robot with buttons or voice commands.
+
+*circuit:
+from vex website
+Black Wire - Ground
+Orange Wire - Power
+White Wire - PWM Signal
+
+We will wire black and orange wires to a dc battery, make sure orange is positive terminal and black is negative otherwise it wont work. White wire will be connected to GPIO pin on rasperry.

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MyMirror interface</title>
+    <link rel="stylesheet" href="/styles/mystyle.css">
+</head>
+
+<body>
+    <!-- toolbar -->
+    <div class="toolbar">
+        <table style="width: 100%">
+            <td style="width: 50%;">
+                <button onclick="window.location='/';" class="btn2"> Back</button>
+            </td>
+            <td class="time">
+                <h5 id="date"> </h5>
+                <h6 id="time"> </h6>
+            </td>
+        </table>
+    </div>
+    <!-- main box -->
+    <div class="mainbox">
+        <div id="map" style=" width:100%;height:100%;"></div>
+    </div>
+</body>
+
+<script>
+            var d = new Date();
+        document.getElementById("date").innerHTML = d.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' });
+        document.getElementById("time").innerHTML = d.toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true });
+    setInterval(function () {
+
+        var d = new Date();
+        document.getElementById("date").innerHTML = d.toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric' });
+        document.getElementById("time").innerHTML = d.toLocaleString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true });
+    }, 300);
+</script>
+
+<script>
+  initMap = () => {
+    var mycenter = { lat: 25.23128015612677, lng: 55.37754819262773 }
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: mycenter,
+      disableDefaultUI: true,
+      draggable: false,
+    });
+
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.setCenter(mycenter);
+  });
+
+    var trafficLayer = new google.maps.TrafficLayer();
+    trafficLayer.setMap(map);
+  };
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHkyUq8zg1wDeiTuo7-WUHDji16L8-3dU&callback=initMap"  ></script>
+
+</html>
+
+
+
+
