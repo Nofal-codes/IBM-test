@@ -8,7 +8,7 @@ var routes = require('./api/routes/Routes'); //importing route
 routes(app); //register the route
 
 //listening to port
-var port =  80 ||process.env.PORT;
+var port =  3000;
 app.listen(port);
 console.log('todo list RESTful API server started on: ' + port);
 
